@@ -68,5 +68,5 @@ Genera _Tesis-Cosme-Fulanito.pdf_, es el informe completo.
 Genera _/chapters/chapter-1.pdf_, se entiende (y obvio que si se cambia el número va cambiando el cap a compilar)
 
 **Bugs**
-Por algún motivo el drafwatermark cambia una página antes que termine el capítulo, por ejemplo: Si se pone solo en el capítulo 1, va a estar SALVO en la última página. Idem si se pone la marca de agua en el documento general pero sea va sacando en los capítulos, en la última página de cada uno se cuela el "DRAFT". Misterio
+Por algún motivo el drafwatermark cambia una página antes que termine el capítulo, por ejemplo: Si se pone solo en el capítulo 1, va a estar SALVO en la última página. Idem si se pone la marca de agua en el documento general pero se va sacando en los capítulos, en la última página de cada uno se cuela el "DRAFT". Misterio
                                                   
