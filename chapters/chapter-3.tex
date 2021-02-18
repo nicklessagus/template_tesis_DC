@@ -1,0 +1,25 @@
+%% cuando este chapter deje de ser draft
+\draftwatermarkoff
+
+\documentclass[main.tex]{subfiles}
+
+
+\begin{document}
+	% para que agregue el TOC y los ToDo'si se está compilando este capítulo por separado
+	\onlyinsubfile{
+
+		
+		\tableofcontents
+		\listoftodos[Notes]
+	}
+
+\chapter{Resultados y análisis}
+\lipsum[1-8]
+
+
+% para que agregue la bibliografia si estás compilando este capítulo por separado
+\onlyinsubfile{
+	\bibliographystyle{alpha}
+	\bibliography{bibliography}
+}
+\end{document}

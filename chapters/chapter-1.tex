@@ -1,0 +1,28 @@
+%% cuando este chapter deje de ser draft
+\draftwatermarkon
+
+
+\documentclass[main.tex]{subfiles}
+
+\begin{document}
+	% para que agregue el TOC y los ToDo'si se está compilando este capítulo por separado
+	\onlyinsubfile{
+		\tableofcontents
+		\listoftodos[Notes]
+	}
+
+\chapter{Introducción}
+
+Como dijo Alan en \cite{turing1936a} 
+\missingfigure{Poner una foto de Turing}
+\lipsum[1-2]
+\todo{Hola, soy un ToDo} Acá falta hacer algo...
+\lipsum[2-5]
+
+% para que agregue la bibliografia si estás compilando este capítulo por separado
+\onlyinsubfile{
+	\bibliographystyle{alpha}
+	\bibliography{bibliography}
+}
+
+\end{document}

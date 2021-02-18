@@ -1,0 +1,32 @@
+%% cuando este chapter deje de ser draft
+\draftwatermarkoff
+
+
+\documentclass[main.tex]{subfiles}
+
+\begin{document}
+	% para que agregue el TOC y los ToDo'si se está compilando este capítulo por separado
+	\onlyinsubfile{
+
+		
+		\tableofcontents
+		\listoftodos[Notes]
+	}
+
+\chapter{Mirá como te clavo todo lo que no iba en los otros capítulos}
+\begin{flushright}
+	\begin{footnotesize}
+		\textit{``No entiendo ¿es un final triste o un final feliz?''}\\                      
+		-- Homero J. Simpson, S05E04	
+	\end{footnotesize}
+\end{flushright}
+\vspace{.5cm}
+
+\lipsum[1-8]
+
+% para que agregue la bibliografia si estás compilando este capítulo por separado
+\onlyinsubfile{
+	\bibliographystyle{alpha}
+	\bibliography{bibliography}
+}
+\end{document}

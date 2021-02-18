@@ -1,0 +1,178 @@
+\documentclass[11pt,a4paper,twoside]{tesis}
+% SI NO PENSAS IMPRIMIRLO EN FORMATO LIBRO PODES USAR
+%\documentclass[11pt,a4paper]{tesis}
+
+%para forzar algunas imágenes que vayan donde yo quiero con el [H]
+\usepackage{float}
+
+%Para rellenar con lorem ipsum, obvio que se puede sacar
+\usepackage{lipsum}  
+
+%para decirle a graphicx donde ir a buscar las imágenes y safar de poner la ruta
+\usepackage{graphicx}
+\graphicspath{{img/}{../img/}}
+
+\usepackage[utf8]{inputenc} %por si se usa pdflatex
+\usepackage[spanish,es-nodecimaldot]{babel} %importante el tema del punto decimal
+\usepackage[left=3cm,right=3cm,bottom=3.5cm,top=3.5cm]{geometry}
+
+%para poner texto en un math con \text{}
+\usepackage{amsmath}
+
+%links coloridos en el PDFs
+%queda horrible el rojo, pero para que se note
+\usepackage{hyperref}
+\hypersetup{
+	colorlinks=true,
+	linkcolor=red,
+	urlcolor=blue,
+	citecolor=red
+}
+
+\usepackage{amsmath}
+\usepackage{algorithm}
+\usepackage[noend]{algpseudocode}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{todonotes}
+\setlength{\marginparwidth}{25mm}
+
+%% El paquete TODO es para poner notas o reservar espacio para imágenes. 
+%% Ejemplos: 
+%% \todo{Make a cake}
+%% \missingfigure
+%% \missingfigure{poner dibujo de X}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Para poner el watermark de DRAFT. 
+% las macros son para poder poner y sacar en cada capítulo a medida que se vayan terminando
+\usepackage{draftwatermark}
+\SetWatermarkText{DRAFT}
+\SetWatermarkScale{2}
+
+\makeatletter
+\let\originalsc@watermark\sc@watermark
+\newcommand{\draftwatermarkon}{%
+  \let\sc@watermark\originalsc@watermark
+}
+\newcommand{\draftwatermarkoff}{%
+  \let\sc@watermark\@empty
+}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{listings}
+\usepackage{xcolor}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% Para colorear código
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{mystyle}{
+	backgroundcolor=\color{backcolour},   
+	commentstyle=\color{codegreen},
+	keywordstyle=\color{magenta},
+	numberstyle=\tiny\color{codegray},
+	stringstyle=\color{codepurple},
+	basicstyle=\ttfamily\footnotesize,
+	breakatwhitespace=false,         
+	breaklines=true,                 
+	captionpos=b,                    
+	keepspaces=true,                 
+	numbers=left,                    
+	numbersep=5pt,                  
+	showspaces=false,                
+	showstringspaces=false,
+	showtabs=false,                  
+	tabsize=2
+}
+
+\lstset{style=mystyle}
+\linespread{1.3}	
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Para poder trabajar cada capitulo/archivo por separado
+% si compilo el main incluye los .tex de los capitulos como es habitual 
+% pero tambien puedo compilar los capitulos por separado para poder
+% concentrarse en cada uno sin tener que trabajar con todo el documento
+
+% IMPORTANTE:
+% hay que hacer link simbolicos al main, tesis y bibliography en el directorio chapters
+%
+% ln -s ../bibliography.bib bibliography.bib
+% ln -s ../tesis.cls tesis.cls
+% ln -s ../main.tex main.tex
+
+% Macro para que corra comandos solo si es compilado el subfile standalone
+\usepackage{subfiles}
+\newcommand{\onlyinsubfile}[1]{#1}
+
+
+\begin{document}
+\renewcommand{\onlyinsubfile}[1]{}
+
+%%%%%%%%%%%%%%%%%%%%%%5
+%%% Si se quiere poner o sacar el draft de la portada y las primeras secciones
+\draftwatermarkoff
+
+
+
+%%%% CARATULA
+\def\autor{Cosme Fulanito}
+%Título de la carátula
+\def\tituloTesis{Buenas noches señores, ¿molesto con una copilla, por favor?}
+%Títulos del abstract en español/inglés
+\def\runtitulo{Buenas noches señores, \\¿molesto con una copilla, por favor?}
+\def\runtitle{Greetings, good man. \\ Might I trouble you for a drink?}
+\def\director{Dr. Nick Riviera}
+\def\codirector{Dr. Hibbert}
+\def\lugar{Springfield, 2020}
+\input{caratula}
+
+%%%% ABSTRACTS, AGRADECIMIENTOS Y DEDICATORIA
+\frontmatter
+\pagestyle{empty}
+\input{abs_esp.tex}
+
+\cleardoublepage
+\input{abs_en.tex} % OPCIONAL: comentar si no se quiere 
+
+\cleardoublepage
+\input{agradecimientos.tex} % OPCIONAL: comentar si no se quiere
+
+\cleardoublepage
+\input{dedicatoria.tex}  % OPCIONAL: comentar si no se quiere
+
+\cleardoublepage
+\tableofcontents
+
+\mainmatter
+\pagestyle{headings}
+
+%Si se quiere la lista de todos los TODO del documento
+%\listoftodos[Notes]
+
+%%%% ACA VA EL CONTENIDO DE LA TESIS
+\subfile{chapters/chapter-1}
+\newpage
+\subfile{chapters/chapter-2}
+\newpage
+\subfile{chapters/chapter-3}
+\newpage
+\subfile{chapters/chapter-4}
+\newpage
+
+%%% BIBLIOGRAFIA
+%% Primero va la bibliografia, después el apéndice
+%\backmatter %esto está en el template del DC pero ya no va
+
+%Se puede cambiar el estilo de la bibliografia, este es medio críptico :P
+\bibliographystyle{alpha}
+\bibliography{bibliography}
+
+\appendix
+\subfile{chapters/chapter-5}
+
+\end{document}
