@@ -16,7 +16,7 @@ Se utilizaron varios paquetes de LaTeX que podrian no estar en la instalación s
 
 **Hyperref**
 
-Hyperlinks en el pdf, tanto para URL o referencias internas.
+Hyperlinks en el pdf, tanto para URL o referencias internas. En el ejemplo los links de los capítulos están en rojo, se supone que para ser algo más formal deberian estar en negro, o capaz en azul. En el mail está la configuración, revisar y adaptar.
 
 **Subfiles**
 
